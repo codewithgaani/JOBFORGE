@@ -15,7 +15,6 @@ A production-grade background job queue built with Node.js, Redis, PostgreSQL, a
 5. Results and status updates are persisted in PostgreSQL.
 6. API notifies the dashboard through WebSockets.
 
-
 ## What it does
 
 - Queue async jobs (emails, reports, image processing, etc.)
@@ -31,5 +30,7 @@ A production-grade background job queue built with Node.js, Redis, PostgreSQL, a
 - **Deployment:** AWS EC2
 
 ## Getting Started
+
 npm install
+
 npm run dev
