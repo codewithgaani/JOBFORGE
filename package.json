@@ -1,0 +1,27 @@
+{
+  "name": "jobforge",
+  "version": "1.0.0",
+  "description": "Distributed task queue system with priority, retry logic, and real-time dashboard",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "worker": "node src/workers/jobWorker.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "distributed-systems",
+    "job-queue",
+    "redis",
+    "nodejs"
+  ],
+  "author": "Krishna Bhatt",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "redis": "^4.6.5",
+    "pg": "^8.10.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {}
+}
