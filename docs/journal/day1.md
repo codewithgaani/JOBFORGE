@@ -35,9 +35,6 @@ git init
 npm init -y
 npm install
 
-## Challenges Faced
-
-- Windows CMD uses '\' instead of '/'
 
 ## Key Takeaway
 
