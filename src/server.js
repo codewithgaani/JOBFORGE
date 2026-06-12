@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import redisClient from './config/redis.js';
+import pool from './config/db.js';
 
 dotenv.config();
 
@@ -9,16 +10,24 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Health check — now also verifies Redis is alive
 app.get('/health', async (req, res) => {
   const redisPing = await redisClient.ping();
+
+  let dbStatus = 'disconnected';
+  try {
+    await pool.query('SELECT 1');
+    dbStatus = 'connected';
+  } catch (err) {
+    dbStatus = 'disconnected';
+  }
 
   res.json({
     status: 'ok',
     service: 'JobForge API',
     timestamp: new Date().toISOString(),
     uptime: Math.floor(process.uptime()),
-    redis: redisPing === 'PONG' ? 'connected' : 'disconnected'
+    redis: redisPing === 'PONG' ? 'connected' : 'disconnected',
+    database: dbStatus
   });
 });
 
